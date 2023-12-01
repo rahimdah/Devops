@@ -1,0 +1,22 @@
+# Étape 1 : Installer les dépendances
+FROM node:14 AS dependencies
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+# Étape 2 : Copier les fichiers du site web
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
+
+# Exposez le port 80 pour accéder au site web
+EXPOSE 80
+
+# Commande pour démarrer le serveur Nginx
+CMD ["nginx", "-g", "daemon off;"]

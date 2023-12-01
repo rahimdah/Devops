@@ -1,0 +1,9 @@
+{
+    "spec_dir": "./tests/spec",
+    "spec_files": [
+        "**/*[tT]est.spec.js"
+    ],
+    "helpers": [
+        "helpers/**/*.js"
+    ]
+}
