@@ -41,7 +41,7 @@ pipeline {
             steps {
                  script {
                 // Exemple: Déployez l'application sur l'environnement de staging
-                bat 'docker-compose -f docker-compose.staging.yml exec -T app-container bat -c "npm run deploy"'
+                bat 'docker-compose -f docker-compose.staging.yml exec -T app-container npm run deploy'
                 }
             }
         }
